@@ -1,0 +1,137 @@
+#{$rpb-prefix} {
+  $shadow: #10161a;
+
+  &-tile {
+    display: grid;
+    grid-template-areas: "title" "content";
+    grid-template-rows: auto 1fr;
+    margin: 1px;
+    overflow: hidden;
+    position: relative;
+
+    > #{$rpb-prefix}-actions {
+      flex-flow: row nowrap;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    &__title {
+      font-size: 0.75em;
+      grid-area: title;
+      line-height: 2em;
+      overflow: hidden;
+      padding: 0 2em 0 0.5em;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    &__content {
+      display: grid;
+      grid-area: content;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr;
+      overflow: hidden;
+
+      > * {
+        grid-area: unset;
+        user-select: text;
+      }
+    }
+
+    &--background {
+      background-color: $rpb-tile-background;
+      box-shadow: 0 0 0 1px rgba($shadow, 0.15), 0 0 0 rgba($shadow, 0), 0 0 0 rgba($shadow, 0);
+      margin: 1px;
+    }
+
+    &--expanded {
+      background-color: $rpb-tile-background;
+      bottom: 1em;
+      box-shadow: 0 0 0 1px rgba($shadow, 0.1), 0 4px 8px rgba($shadow, 0.2),
+        0 18px 46px 6px rgba($shadow, 0.2);
+      height: unset;
+      left: 1em;
+      position: fixed;
+      right: 1em;
+      top: 1em;
+      z-index: 500;
+    }
+
+    // &[data-show-title="hover"]:hover &__title {
+    //   max-height: 2em;
+    //   transition-delay: 1s;
+    // }
+    // &[data-show-title="always"] &__title,
+    // &--expanded &__title {
+    //   max-height: 2em;
+    //   // stylelint-disable-next-line
+    //   transition: none !important;
+    // }
+
+    &__placeholder {
+      left: 0;
+      line-height: 1;
+      margin: auto;
+      opacity: 0.25;
+      pointer-events: none;
+      position: absolute;
+      right: 0;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+
+      & > p {
+        font-size: 0.8em;
+        margin: 0;
+        padding: 4px 0;
+      }
+      &--icon {
+        font-size: 48px;
+      }
+    }
+
+    &:hover {
+      > #{$rpb-prefix}-actions {
+        display: flex;
+      }
+    }
+  }
+
+  &-card {
+    align-items: center;
+    background-color: $rpb-tile-background;
+    border: 1px solid $rpb-tile-border;
+    border-radius: 4px;
+    box-shadow: 0 1px 2px $rpb-tile-border;
+    cursor: move;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    margin: 1rem 0;
+
+    &__icon {
+      color: rgba(0, 0, 0, 0.5);
+      font-size: 1.5em;
+      min-height: 1em;
+      min-width: 1em;
+      padding: 4px;
+
+      & > ::before {
+        display: block;
+        height: 1em;
+        line-height: 1;
+        text-align: center;
+        width: 1em;
+      }
+    }
+
+    &__title {
+      font-size: 0.9em;
+      padding: 0 4px;
+    }
+
+    &:hover,
+    &:active {
+      border-color: $rpb-active-color;
+    }
+  }
+}

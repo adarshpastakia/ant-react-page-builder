@@ -1,0 +1,95 @@
+#{$rpb-prefix} {
+  &-head {
+    margin-bottom: $rpb-gutter;
+    padding: 0 4px;
+    position: relative;
+
+    &-icon::before {
+      content: "H";
+    }
+
+    > #{$rpb-prefix}-actions {
+      flex-flow: column;
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+
+    &__container {
+      font-size: 1.2em;
+      font-weight: 300;
+      padding: 4px 0;
+    }
+
+    input {
+      background: none;
+      border: 0;
+      display: block;
+      font-size: 1.2em;
+      font-weight: 300;
+      outline: 0;
+      padding: 4px 0;
+      width: 100%;
+    }
+  }
+
+  &-row {
+    margin-bottom: $rpb-gutter;
+    position: relative;
+
+    &__container {
+      display: grid;
+      grid-auto-flow: column;
+      grid-gap: $rpb-gutter;
+      grid-template-columns: repeat(12, minmax(10px, 1fr));
+      min-height: 50px;
+      position: relative;
+    }
+
+    & #{$rpb-prefix}-row #{$rpb-prefix}-actions {
+      z-index: 3;
+    }
+
+    &.child-resizing > #{$rpb-prefix}-row__overlay {
+      display: grid;
+    }
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    &-icon::before {
+      content: "\2550";
+    }
+
+    &__overlay {
+      bottom: 0;
+      display: none;
+      grid-auto-flow: column;
+      grid-gap: $rpb-gutter;
+      grid-template-columns: repeat(12, minmax(10px, 1fr));
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: 0;
+
+      > div {
+        background-color: rgba(#b0e0e6, 0.15);
+      }
+    }
+
+    > #{$rpb-prefix}-actions {
+      flex-flow: column;
+      transform: translate(6px, 1.5em);
+    }
+
+    > #{$rpb-prefix}-resize-handle {
+      bottom: 4px;
+      cursor: ns-resize;
+      height: 4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 24px;
+    }
+  }
+}

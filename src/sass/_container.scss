@@ -1,0 +1,186 @@
+#{$rpb-prefix} {
+  &-aside {
+    background-color: $rpb-aside-background;
+    border: 1px solid $rpb-aside-border;
+    display: grid;
+    grid-area: aside;
+    grid-template-rows: auto 1fr;
+    min-width: 200px;
+    overflow: hidden;
+
+    &__content {
+      overflow: auto;
+      padding: 1em;
+    }
+
+    &__internal {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: space-evenly;
+
+      #{$rpb-prefix}-card__title {
+        display: none;
+      }
+    }
+  }
+
+  &-query--input {
+    background-color: $rpb-tile-background;
+    border: 1px solid transparent;
+    border-bottom-color: $rpb-tile-border;
+    font-size: 0.9em;
+    outline: none;
+    padding: 4px 8px;
+    width: 100%;
+
+    &:focus {
+      border-bottom-color: $rpb-active-color;
+    }
+  }
+
+  &-container {
+    grid-area: container;
+    overflow: auto;
+    padding: $rpb-gutter;
+  }
+
+  &-actions {
+    background-color: $rpb-tile-background;
+    box-shadow: 0 0 1px $rbp-base-border;
+    display: none;
+    flex-flow: row nowrap;
+    line-height: 1;
+    position: absolute;
+    z-index: 3;
+
+    > a {
+      color: rgba(0, 0, 0, 0.5);
+      cursor: pointer;
+      display: inline-block;
+      font-size: 1em;
+      line-height: 0;
+      padding: 0.25em;
+
+      &.move {
+        cursor: move;
+      }
+
+      > svg {
+        fill: currentColor;
+        height: 1em;
+        pointer-events: none;
+        width: 1em;
+      }
+
+      &:hover {
+        background-color: $rpb-tile-background;
+        box-shadow: 0 0 0 1px $rbp-base-border inset;
+        color: $rpb-active-color;
+      }
+    }
+
+    & > a.settings:hover > &__settings {
+      display: block;
+    }
+
+    &__settings {
+      background-color: $rpb-tile-background;
+      box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.25);
+      color: $rpb-base-color;
+      display: none;
+      line-height: 1;
+      padding: 0.25em;
+      position: absolute;
+      right: 0;
+
+      label {
+        color: rgba(0, 0, 0, 0.7);
+        display: block;
+        font-size: 0.5em;
+        width: 6em;
+      }
+
+      ul {
+        align-items: center;
+        display: grid;
+        grid-auto-columns: 1fr;
+        grid-auto-flow: column;
+        list-style: none;
+        margin: 4px 0;
+        padding: 0;
+
+        li {
+          border: 1px solid rgba(0, 0, 0, 0.2);
+          display: inline-block;
+          font-size: 0.5em;
+          line-height: 2;
+          margin: 0;
+          min-width: 5em;
+          padding: 0;
+          text-align: center;
+
+          &:hover {
+            background-color: rgba($rpb-active-color, 0.2);
+          }
+
+          &.active {
+            background-color: $rpb-active-color;
+            color: #ffffff;
+          }
+        }
+      }
+    }
+  }
+
+  &-resize-handle {
+    background-color: mix($rpb-base-background, $rpb-base-color, 50%);
+    border: 1px solid $rpb-base-color;
+    border-radius: 4px;
+    display: none;
+    position: absolute;
+    z-index: 5;
+  }
+
+  &-empty {
+    color: rgba(0, 0, 0, 0.25);
+    display: none;
+    font-size: 0.8em;
+    left: 50%;
+    pointer-events: none;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    .rpb-divider {
+      font-size: 1.2em;
+      &::before {
+        background-color: rgba($rpb-base-color, 0.3);
+        content: "";
+        height: 1px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 50%;
+        z-index: 0;
+      }
+
+      > span {
+        background-color: $rpb-base-background;
+        padding: 0 4px;
+        position: relative;
+        z-index: 5;
+      }
+    }
+  }
+
+  &-ghost {
+    background-color: rgba($rpb-base-background, 0.25);
+    border: 2px dashed $rpb-active-color;
+    min-height: 50px;
+    &.rpb-tile {
+      margin: -1px;
+    }
+  }
+}

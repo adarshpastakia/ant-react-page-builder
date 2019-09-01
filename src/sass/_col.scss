@@ -1,0 +1,36 @@
+#{$rpb-prefix} {
+  &-col {
+    overflow: hidden;
+    position: relative;
+
+    &__container {
+      display: grid;
+      height: calc(100%);
+
+      &[data-has-row="true"] {
+        align-content: start;
+      }
+    }
+
+    & #{$rpb-prefix}-col #{$rpb-prefix}-actions {
+      z-index: 3;
+    }
+
+    &-icon::before {
+      content: "\2551";
+    }
+
+    > #{$rpb-prefix}-actions {
+      transform: translate(2em, 6px);
+    }
+
+    > #{$rpb-prefix}-resize-handle {
+      cursor: ew-resize;
+      height: 24px;
+      right: 4px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+    }
+  }
+}
