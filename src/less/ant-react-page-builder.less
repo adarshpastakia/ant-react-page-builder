@@ -1,14 +1,148 @@
 @import "~antd/dist/antd.less";
 
-.ards-dropdown-overlay {
-  padding: 0;
-  z-index: 1050;
+@rpb-gutter: 8px;
 
-  & .ant-popover-arrow {
-    display: none
+@rpb-base-color: #292929;
+@rpb-base-background: #f5f5f5;
+@rpb-base-border: #d9d9d9;
+
+@rpb-aside-background: #fefefe;
+@rpb-aside-border: #f0f0f0;
+
+@rpb-tile-background: #ffffff;
+@rpb-tile-border: rgba(#000000, 0.1);
+
+@rpb-active-color: #2775b4;
+
+@rpb-row1: #b81e1e;
+@rpb-col1: #3b8b3b;
+@rpb-row2: #1e5bb6;
+@rpb-col2: #ad1d82;
+
+@rpb-prefix: rpb;
+
+.react-page-builder {
+  background-color: @rpb-base-background;
+  bottom: 0;
+  color: @rpb-base-color;
+  direction: ltr;
+  display: grid;
+  font-family: sans-serif;
+  grid-template-areas: "container aside";
+  grid-template-columns: 1fr auto;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transform: translate3d(0, 0, 0);
+  user-select: none;
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
   }
 
-  & .ant-popover-inner-content {
-    padding: 0
+  &[data-editing="true"] {
+    .@{rpb-prefix} {
+      &-container {
+        padding: 2em;
+
+        > .@{rpb-prefix}-row {
+          &:hover::before {
+            border-color: @rpb-row1;
+            border-style: double;
+          }
+
+          > .@{rpb-prefix}-actions {
+            background: @rpb-base-background;
+            box-shadow: 3px 0 0 0 @rpb-row1;
+            transform: translate(-1.5em, 1.5em);
+            z-index: 2;
+          }
+
+          > .@{rpb-prefix}-row__container > .@{rpb-prefix}-col {
+            &:hover::before {
+              border-color: @rpb-col1;
+              border-style: double;
+            }
+
+            > .@{rpb-prefix}-actions {
+              background: @rpb-base-background;
+              box-shadow: 0 3px 0 0 @rpb-col1;
+              transform: translate(2em, -1.5em);
+              z-index: 2;
+            }
+          }
+        }
+      }
+
+      &-row,
+      &-col,
+      &-head,
+      &-tile {
+        box-shadow: none;
+
+        &:hover {
+          &::before {
+            border-color: @rpb-active-color;
+            z-index: 1;
+          }
+
+          > .@{rpb-prefix}-actions {
+            display: flex;
+          }
+
+          > .@{rpb-prefix}-resize-handle {
+            display: block;
+          }
+        }
+      }
+
+      &-row,
+      &-col {
+        &::before {
+          border: 1px solid @rpb-base-border;
+          bottom: 0;
+          content: "";
+          left: 0;
+          pointer-events: none;
+          position: absolute;
+          right: 0;
+          top: 0;
+        }
+      }
+
+      &-row {
+        &:hover::before {
+          border-color: @rpb-row2;
+        }
+
+        > .@{rpb-prefix}-actions {
+          box-shadow: -2px 0 0 0 @rpb-row2;
+        }
+      }
+
+      &-col {
+        overflow: visible;
+
+        &:hover::before {
+          border-color: @rpb-col2;
+        }
+
+        > .@{rpb-prefix}-actions {
+          box-shadow: 0 -2px 0 0 @rpb-col2;
+        }
+      }
+
+      &-empty {
+        display: inline-block;
+      }
+    }
   }
 }
+
+@import "./_container";
+@import "./_row";
+@import "./_col";
+@import "./_tile";
