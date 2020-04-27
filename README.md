@@ -1,5 +1,11 @@
 # React Page Builder
 
+
+> # DEPRECATED
+> ## This repository is moved to [https://github.com/adarshpastakia/ant-extensions](https://github.com/adarshpastakia/ant-extensions)
+
+
+
 ### Drag-n-Drop page builder for creating dynamic dashboard layouts.
 
 ---
